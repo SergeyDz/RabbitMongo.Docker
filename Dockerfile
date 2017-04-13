@@ -7,8 +7,8 @@ ENV RABBITMQ_DEFAULT_USER=messagebus
 ENV RABBITMQ_DEFAULT_PASS=messagebus
 ENV RABBITMQ_DEFAULT_VHOST=vhost_test
 
-COPY scripts/start.sh /usr/local/bin/
-RUN chmod 777 /usr/local/bin/start.sh
+#COPY scripts/start.sh /usr/local/bin/
+#RUN chmod 777 /usr/local/bin/start.sh
 
 RUN apt-get update && apt-get install -y openssh-server apache2 supervisor
 RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor
