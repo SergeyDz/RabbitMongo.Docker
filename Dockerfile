@@ -10,7 +10,10 @@ ENV RABBITMQ_DEFAULT_VHOST=vhost_test
 COPY scripts/start.sh /usr/local/bin/
 RUN chmod 777 /usr/local/bin/start.sh
 
+RUN apt-get update && apt-get install -y openssh-server apache2 supervisor
+RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor
+
+COPY scripts/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 4369 5671 5672 25672 15672 27017
-#ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["/usr/local/bin/start.sh"]
+CMD ["/usr/bin/supervisord"]
