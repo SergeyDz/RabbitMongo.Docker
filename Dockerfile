@@ -1,4 +1,4 @@
-FROM rabbitmq:3-management
+FROM rabbitmq:management
 
 COPY scripts/install.mongo.sh /usr/local/bin/
 RUN chmod 777 /usr/local/bin/install.mongo.sh &&  /usr/local/bin/install.mongo.sh 
